@@ -467,3 +467,10 @@ const getCardEdit = () => {
     </article>
 `;
 };
+
+/* Ф-я возврата разметки кнопки Load More*/
+const getLoadMoreButton = () => {
+  return `
+    <button class="load-more" type="button">load more</button>
+  `;
+};
