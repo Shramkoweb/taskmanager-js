@@ -1,5 +1,8 @@
 'use strict';
 
+const mainControlElement = document.querySelector(`.control`);
+const mainElement = document.querySelector(`main`);
+
 /* Ф-я возврата разметки меню (main__control) */
 const getControl = () => {
   return `
@@ -511,3 +514,9 @@ const getBoard = () => {
       </section>
   `;
 };
+
+/* Рендер компонентов в разметку */
+renderComponent(mainControlElement, getControl());
+renderComponent(mainElement, getSearch());
+renderComponent(mainElement, getFilter());
+renderComponent(mainElement, getBoard());
