@@ -34,6 +34,7 @@ const getControl = () => {
   `;
 };
 
+/* Ф-я возврата разметки поиска */
 const getSearch = () => {
   return `
     <section class="main__search search container">
@@ -48,7 +49,7 @@ const getSearch = () => {
   `;
 };
 
-
+/* Ф-я возврата разметки основных фильтров */
 const getFilter = () => {
   return `
     <section class="main__filter filter container">
