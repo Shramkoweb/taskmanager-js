@@ -3,7 +3,7 @@
 const mainControlElement = document.querySelector(`.control`);
 const mainElement = document.querySelector(`main`);
 
-/* Ф-я возврата разметки меню (main__control) */
+/* Ф-я генерации разметки меню (main__control) */
 const getControl = () => {
   return `
     <section class="control__btn-wrap">
@@ -37,7 +37,7 @@ const getControl = () => {
   `;
 };
 
-/* Ф-я возврата разметки поиска */
+/* Ф-я генерации разметки поиска */
 const getSearch = () => {
   return `
     <section class="main__search search container">
@@ -52,7 +52,7 @@ const getSearch = () => {
   `;
 };
 
-/* Ф-я возврата разметки основных фильтров */
+/* Ф-я генерации разметки основных фильтров */
 const getFilter = () => {
   return `
     <section class="main__filter filter container">
@@ -126,8 +126,7 @@ const getFilter = () => {
   `;
 };
 
-
-/* Ф-я возврата разметки карточки задачи */
+/* Ф-я генерации разметки карточки задачи */
 const getCard = () => {
   return `
     <article class="card card--black">
@@ -198,7 +197,7 @@ const getCard = () => {
   `;
 };
 
-/* Ф-я возврата разметки формы создания задачи */
+/* Ф-я генерации разметки формы создания задачи */
 const getCardEdit = () => {
   return `
     <article class="card card--edit card--yellow card--repeat">
@@ -471,13 +470,12 @@ const getCardEdit = () => {
 `;
 };
 
-/* Ф-я возврата разметки кнопки Load More*/
+/* Ф-я генерации разметки кнопки Load More*/
 const getLoadMoreButton = () => {
   return `
     <button class="load-more" type="button">load more</button>
   `;
 };
-
 
 /* Ф-я гереации карточек */
 const getCards = (count) => {
@@ -495,7 +493,7 @@ const renderComponent = (container, component) => {
   return container.insertAdjacentHTML(`beforeend`, component);
 };
 
-/* Ф-я возврата борда для карточек */
+/* Ф-я генерации разметки борда для карточек */
 const getBoard = () => {
   return `
       <section class="board container">
