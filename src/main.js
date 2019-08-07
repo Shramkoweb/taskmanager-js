@@ -474,3 +474,15 @@ const getLoadMoreButton = () => {
     <button class="load-more" type="button">load more</button>
   `;
 };
+
+
+/* Ф-я гереации карточек */
+const getCards = (count) => {
+  const cards = [];
+
+  for (let i = 0; i < count; i++) {
+    cards.push(getCard());
+  }
+
+  return cards.join(` `);
+};
