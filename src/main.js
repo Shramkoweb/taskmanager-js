@@ -486,3 +486,8 @@ const getCards = (count) => {
 
   return cards.join(` `);
 };
+
+/* Ф-я рендера компонента */
+const renderComponent = (container, component) => {
+  return container.insertAdjacentHTML(`beforeend`, component);
+};
