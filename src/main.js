@@ -491,3 +491,23 @@ const getCards = (count) => {
 const renderComponent = (container, component) => {
   return container.insertAdjacentHTML(`beforeend`, component);
 };
+
+/* Ф-я возврата борда для карточек */
+const getBoard = () => {
+  return `
+      <section class="board container">
+        <div class="board__filter-list">
+          <a href="#" class="board__filter">SORT BY DEFAULT</a>
+          <a href="#" class="board__filter">SORT BY DATE up</a>
+          <a href="#" class="board__filter">SORT BY DATE down</a>
+        </div>
+        
+        <div class="board__tasks">
+          ${getCardEdit()}
+          ${getCards(3)}
+        </div>
+        
+        ${getLoadMoreButton()}
+      </section>
+  `;
+};
