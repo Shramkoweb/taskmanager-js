@@ -1,4 +1,4 @@
-# Личный проект «Менеджер задач» [![Build status][travis-image]][travis-url]
+# Учебный проект «Менеджер задач» [![Build status][travis-image]][travis-url]
 
 * Студент: [Sergey Shramko](https://up.htmlacademy.ru/ecmascript/9/user/852139).
 * Наставник: [Vladimir Korshunov](https://github.com/BekoBou).
