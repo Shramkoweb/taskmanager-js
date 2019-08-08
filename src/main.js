@@ -1,5 +1,6 @@
 'use strict';
 
+const CARD_COUNT = 3;
 const mainControlElement = document.querySelector(`.control`);
 const mainElement = document.querySelector(`main`);
 
@@ -505,7 +506,7 @@ const getBoard = () => {
         
         <div class="board__tasks">
           ${getCardEdit()}
-          ${getCards(3)}
+          ${getCards(CARD_COUNT)}
         </div>
         
         ${getLoadMoreButton()}
