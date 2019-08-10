@@ -1,5 +1,6 @@
 import {getCard} from "./card";
 import {getCardEdit} from "./card-edit";
+import {getLoadMoreButton} from "./load-more-button";
 
 /* Ф-я гереации карточек */
 const getCards = (count) => {
@@ -29,12 +30,5 @@ export const getBoard = (cardsCount) => {
         
         ${getLoadMoreButton()}
       </section>
-  `;
-};
-
-/* Ф-я генерации разметки кнопки Load More */
-const getLoadMoreButton = () => {
-  return `
-    <button class="load-more" type="button">load more</button>
   `;
 };
