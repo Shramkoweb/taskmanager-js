@@ -1,3 +1,5 @@
+import {getRandomNumberInRange} from "./util";
+
 const DATE_RANGE_START = 1;
 const DATE_RANGE_END = 7;
 const TAGS_MIN_COUNT = 0;
@@ -29,7 +31,7 @@ const COLORS = [
 ];
 
 /* Получаем дату в указаном диапазоне */
-export const getDateInRange = (startDay, endDay) => {
+export const getDateInRange = (range) => {
   const UNIT = {
     HOURS_IN_DAY: 24,
     MINUTES_IN_HOUR: 60,
@@ -38,8 +40,7 @@ export const getDateInRange = (startDay, endDay) => {
   };
 
   return Date.now() +
-    startDay +
-    Math.floor(Math.random() * endDay) *
+    getRandomNumberInRange(-range, +range) *
     UNIT.HOURS_IN_DAY *
     UNIT.MINUTES_IN_HOUR *
     UNIT.SECONDS_IN_MINUTE *
