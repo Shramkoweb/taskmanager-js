@@ -1,7 +1,6 @@
-import {getRandomNumberInRange} from "./util";
+import {getRandomBoolean, getRandomNumberInRange, getRandomItemFrom} from "./util";
 
-const DATE_RANGE_START = 1;
-const DATE_RANGE_END = 7;
+const DATE_RANGE = 7;
 const TAGS_MIN_COUNT = 0;
 const TAGS_MAX_COUNT = 3;
 
@@ -46,3 +45,33 @@ export const getDateInRange = (range) => {
     UNIT.SECONDS_IN_MINUTE *
     UNIT.MILLISECONDS_IN_SECOND;
 };
+
+/* Генерация массива случайных хештегов */
+const getRandomTags = (tags, count) => {
+  const resultArray = [];
+
+  for (let i = 0; i < count; i++) {
+    resultArray.push(getRandomItemFrom(tags));
+  }
+
+  return resultArray;
+};
+
+/* Генерация обьекта для верстки карточки */
+const getCardData = () => ({
+  description: getRandomItemFrom(DESCRIPTIONS),
+  dueDate: getDateInRange(DATE_RANGE),
+  repeatingDays: {
+    'mo': getRandomBoolean(),
+    'tu': false,
+    'we': getRandomBoolean(),
+    'th': false,
+    'fr': getRandomBoolean(),
+    'sa': false,
+    'su': false,
+  },
+  tags: new Set(getRandomTags(TAGS, getRandomNumberInRange(TAGS_MIN_COUNT, TAGS_MAX_COUNT))),
+  color: getRandomItemFrom(COLORS),
+  isFavorite: getRandomBoolean(),
+  isArchive: getRandomBoolean()
+});
