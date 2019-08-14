@@ -2,15 +2,11 @@ import {getControl} from "./components/control";
 import {getSearch} from "./components/search";
 import {getFilter} from "./components/filter";
 import {getBoard} from "./components/board";
+import {renderComponent} from "./components/util";
 
 const CARD_COUNT = 3;
 const mainControlElement = document.querySelector(`.control`);
 const mainElement = document.querySelector(`main`);
-
-/* Ф-я рендера компонента */
-const renderComponent = (container, component) => {
-  return container.insertAdjacentHTML(`beforeend`, component);
-};
 
 /* Рендер компонентов в разметку */
 renderComponent(mainControlElement, getControl());
