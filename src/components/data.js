@@ -1,3 +1,33 @@
+const DATE_RANGE_START = 1;
+const DATE_RANGE_END = 7;
+const TAGS_MIN_COUNT = 0;
+const TAGS_MAX_COUNT = 3;
+
+/* Массив заголовков карточки*/
+const DESCRIPTIONS = [
+  `Изучить теорию`,
+  `Сделать домашку`,
+  `Пройти интенсив на соточку`,
+];
+
+/* Массив тегов */
+const TAGS = [
+  `homework`,
+  `theory`,
+  `practice`,
+  `intensive`,
+  `keks`,
+];
+
+/* Массив цветов */
+const COLORS = [
+  `black`,
+  `yellow`,
+  `blue`,
+  `green`,
+  `pink`,
+];
+
 /* Получаем дату в указаном диапазоне */
 export const getDateInRange = (startDay, endDay) => {
   const UNIT = {
