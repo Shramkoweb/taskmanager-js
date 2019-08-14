@@ -1,13 +1,14 @@
 import {getCard} from "./card";
 import {getCardEdit} from "./card-edit";
 import {getLoadMoreButton} from "./load-more-button";
+import {getCardData} from "./data";
 
 /* Ф-я гереации карточек */
 const getCards = (count) => {
   const cards = [];
 
   for (let i = 0; i < count; i++) {
-    cards.push(getCard());
+    cards.push(getCard(getCardData()));
   }
 
   return cards.join(` `);

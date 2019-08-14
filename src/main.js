@@ -13,4 +13,3 @@ renderComponent(mainControlElement, getControl());
 renderComponent(mainElement, getSearch());
 renderComponent(mainElement, getFilter());
 renderComponent(mainElement, getBoard(CARD_COUNT));
-
