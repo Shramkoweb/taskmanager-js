@@ -17,3 +17,7 @@ renderComponent(mainControlElement, getControl());
 renderComponent(mainElement, getSearch());
 renderComponent(mainElement, getFilter());
 renderComponent(mainElement, getBoard(CARD_COUNT));
+import {getDateInRange} from "./components/data";
+
+console.log(`${new Date(getDateInRange(1, 7)).toDateString()}`);
+
