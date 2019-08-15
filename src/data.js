@@ -1,4 +1,4 @@
-import {getRandomBoolean, getRandomNumberInRange, getRandomItemFrom} from "./util";
+import {getRandomBoolean, getRandomNumberInRange, getRandomItemFrom} from "./components/util";
 
 const DATE_RANGE = 7;
 const TAGS_MIN_COUNT = 0;

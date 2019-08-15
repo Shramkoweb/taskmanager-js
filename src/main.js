@@ -3,7 +3,7 @@ import {getSearch} from "./components/search";
 import {getFilter} from "./components/filter";
 import {getBoard} from "./components/board";
 import {renderComponent} from "./components/util";
-import {getCards} from "./components/data";
+import {getCards} from "./data";
 
 const CARD_COUNT = 8;
 const mainControlElement = document.querySelector(`.control`);
