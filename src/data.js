@@ -80,3 +80,9 @@ export const getCardData = () => ({
 export const getCards = (count) => {
   return new Array(count).fill(``).map(getCardData);
 };
+
+/* Вычесляем количество задач подходящих под фильтр */
+const getFiltersCount = (cards) => {
+  const countsMap = new Map();
+  countsMap.set(`all`, cards.length);
+};
