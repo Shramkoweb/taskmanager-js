@@ -1,6 +1,6 @@
 import {getControl} from "./components/control";
 import {getSearch} from "./components/search";
-import {getFilter} from "./components/filter";
+import {getFilters} from "./components/filter";
 import {getBoard} from "./components/board";
 import {renderComponent} from "./components/util";
 import {getCards, getFiltersCount} from "./data";
@@ -13,7 +13,5 @@ const TASKS = getCards(CARD_COUNT);
 /* Рендер компонентов в разметку */
 renderComponent(mainControlElement, getControl());
 renderComponent(mainElement, getSearch());
-renderComponent(mainElement, getFilter());
+renderComponent(mainElement, getFilters(getFiltersCount(TASKS)));
 renderComponent(mainElement, getBoard(TASKS));
-
-console.dir(getFiltersCount(TASKS));
