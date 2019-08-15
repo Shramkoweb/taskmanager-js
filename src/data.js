@@ -82,7 +82,34 @@ export const getCards = (count) => {
 };
 
 /* Вычесляем количество задач подходящих под фильтр */
-const getFiltersCount = (cards) => {
-  const countsMap = new Map();
-  countsMap.set(`all`, cards.length);
+export const getFiltersCount = (cards) => {
+  const counts = {
+    all: cards.length,
+    overdue: 0,
+    today: 0,
+    favorites: 0,
+    repeating: 0,
+    tags: 0,
+    archive: 0
+  };
+
+  cards.forEach((card) => {
+    const currentDate = new Date();
+    const cardDate = new Date(card.dueDate);
+
+    counts.overdue = currentDate > cardDate ? counts.overdue += 1 : counts.overdue;
+    counts.today = currentDate === cardDate ? counts.today += 1 : counts.today;
+    counts.favorites = card.isFavorite ? counts.favorites += 1 : counts.favorites;
+    counts.repeating = Object.keys(card.repeatingDays).some((day) => card.repeatingDays[day]) ? counts.repeating += 1 : counts.repeating;
+    counts.tags = card.tags ? counts.tags += 1 : counts.tags;
+    counts.archive = card.isArchive ? counts.archive += 1 : counts.archive;
+  });
+
+  const resultFilters = [];
+
+  for (let [key, value] of Object.entries(counts)) {
+    resultFilters.push({[key]: value});
+  }
+
+  return resultFilters;
 };
