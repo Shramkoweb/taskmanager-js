@@ -3,7 +3,7 @@ import {getCardEdit} from "./card-edit";
 import {getLoadMoreButton} from "./load-more-button";
 
 /* Ф-я гереации карточек */
-const getBoardCards = (cards) => {
+export const getBoardCards = (cards) => {
   return cards.map((card) => getCard(card)).join(``);
 };
 
