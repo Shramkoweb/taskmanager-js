@@ -5,6 +5,7 @@ const getFilter = ({title, count}) => {
         id="filter__all"
         class="filter__input visually-hidden"
         name="filter"
+        ${count === 0 ? `disabled` : ``}
         ${title === `all` ? `checked` : ``}
       />
       <label for="filter__${title}" class="filter__label">
