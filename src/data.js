@@ -108,7 +108,10 @@ export const getFiltersCount = (cards) => {
   const resultFilters = [];
 
   for (let [key, value] of Object.entries(counts)) {
-    resultFilters.push({[key]: value});
+    resultFilters.push({
+      title: key,
+      count: value
+    });
   }
 
   return resultFilters;
