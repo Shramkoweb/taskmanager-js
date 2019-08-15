@@ -1,6 +1,6 @@
-export const getCard = ({description, dueDate, tags, color}) => {
+export const getCard = ({description, dueDate, tags, color, repeatingDays}) => {
   return `
-    <article class="card card--${color}">
+    <article class="card card--${color} ${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `card--repeat` : ``}">
       <div class="card__form">
         <div class="card__inner">
           <div class="card__control">
