@@ -29,21 +29,19 @@ const COLORS = [
   `pink`,
 ];
 
+const UNITS = {
+  HOURS_IN_DAY: 24,
+  MINUTES_IN_HOUR: 60,
+  SECONDS_IN_MINUTE: 60,
+  MILLISECONDS_IN_SECOND: 1000
+};
+
+const TIMESTAMP_DAY = UNITS.HOURS_IN_DAY * UNITS.MINUTES_IN_HOUR * UNITS.SECONDS_IN_MINUTE * UNITS.MILLISECONDS_IN_SECOND;
+
+
 /* Получаем дату в указаном диапазоне */
 export const getDateInRange = (range) => {
-  const UNIT = {
-    HOURS_IN_DAY: 24,
-    MINUTES_IN_HOUR: 60,
-    SECONDS_IN_MINUTE: 60,
-    MILLISECONDS_IN_SECOND: 1000
-  };
-
-  return Date.now() +
-    getRandomNumberInRange(-range, +range) *
-    UNIT.HOURS_IN_DAY *
-    UNIT.MINUTES_IN_HOUR *
-    UNIT.SECONDS_IN_MINUTE *
-    UNIT.MILLISECONDS_IN_SECOND;
+  return Date.now() + getRandomNumberInRange(-range, +range) * TIMESTAMP_DAY;
 };
 
 /* Генерация массива случайных хештегов */
@@ -96,9 +94,11 @@ export const getFiltersCount = (cards) => {
   cards.forEach((card) => {
     const currentDate = new Date();
     const cardDate = new Date(card.dueDate);
+    const isCardToday = (currentDate.getDay() === cardDate.getDay()) && (currentDate.getDate() === cardDate.getDate());
+
 
     counts.overdue = currentDate > cardDate ? counts.overdue += 1 : counts.overdue;
-    counts.today = currentDate === cardDate ? counts.today += 1 : counts.today;
+    counts.today = isCardToday ? counts.today += 1 : counts.today;
     counts.favorites = card.isFavorite ? counts.favorites += 1 : counts.favorites;
     counts.repeating = Object.keys(card.repeatingDays).some((day) => card.repeatingDays[day]) ? counts.repeating += 1 : counts.repeating;
     counts.tags = card.tags ? counts.tags += 1 : counts.tags;
