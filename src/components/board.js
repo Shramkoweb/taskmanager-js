@@ -25,7 +25,7 @@ export const getBoard = (cardsCount) => {
         </div>
         
         <div class="board__tasks">
-          ${getCardEdit()}
+          ${getCardEdit(getCardData())}
           ${getCards(cardsCount)}
         </div>
         
