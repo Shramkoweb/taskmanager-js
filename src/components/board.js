@@ -1,21 +1,14 @@
 import {getCard} from "./card";
 import {getCardEdit} from "./card-edit";
 import {getLoadMoreButton} from "./load-more-button";
-import {getCardData} from "./data";
 
 /* Ф-я гереации карточек */
-const getCards = (count) => {
-  const cards = [];
-
-  for (let i = 0; i < count; i++) {
-    cards.push(getCard(getCardData()));
-  }
-
-  return cards.join(` `);
+const getBoardCards = (cards) => {
+  return cards.map((card) => getCard(card)).join(``);
 };
 
 /* Ф-я генерации разметки борда для карточек */
-export const getBoard = (cardsCount) => {
+export const getBoard = (cards) => {
   return `
       <section class="board container">
         <div class="board__filter-list">
@@ -25,8 +18,8 @@ export const getBoard = (cardsCount) => {
         </div>
         
         <div class="board__tasks">
-          ${getCardEdit(getCardData())}
-          ${getCards(cardsCount)}
+          ${getCardEdit(cards[0])}
+          ${getBoardCards(cards.slice(1))}
         </div>
         
         ${getLoadMoreButton()}

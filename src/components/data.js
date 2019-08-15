@@ -75,3 +75,8 @@ export const getCardData = () => ({
   isFavorite: getRandomBoolean(),
   isArchive: getRandomBoolean()
 });
+
+/* Генерация массива обьектов карточек */
+export const getCards = (count) => {
+  return new Array(count).fill(``).map(getCardData);
+};
