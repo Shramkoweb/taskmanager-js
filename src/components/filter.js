@@ -2,7 +2,7 @@ const getFilter = ({title, count}) => {
   return `
       <input
         type="radio"
-        id="filter__all"
+        id="filter__${title}"
         class="filter__input visually-hidden"
         name="filter"
         ${count === 0 ? `disabled` : ``}
