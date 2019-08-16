@@ -9,5 +9,5 @@ export const getSearch = () => {
       />
       <label class="visually-hidden" for="search__input">Search</label>
     </section>
-  `;
+  `.trim();
 };

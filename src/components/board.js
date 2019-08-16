@@ -24,5 +24,5 @@ export const getBoard = (cards) => {
         
         ${getLoadMoreButton()}
       </section>
-  `;
+  `.trim();
 };

@@ -28,5 +28,5 @@ export const getControl = () => {
         >STATISTICS</label
       >
     </section>
-  `;
+  `.trim();
 };

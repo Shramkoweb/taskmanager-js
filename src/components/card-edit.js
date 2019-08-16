@@ -250,5 +250,5 @@ export const getCardEdit = ({description, dueDate, tags, color, repeatingDays}) 
         </div>
       </form>
     </article>
-`;
+`.trim();
 };
