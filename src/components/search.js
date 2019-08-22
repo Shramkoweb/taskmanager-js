@@ -1,6 +1,6 @@
 import {createElement} from "../util";
 
-export class Search {
+export default class Search {
   constructor() {
     this._element = null;
   }

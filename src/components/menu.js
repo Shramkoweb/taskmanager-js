@@ -1,6 +1,6 @@
 import {createElement} from "../util";
 
-export class Menu {
+export default class Menu {
   constructor() {
     this._element = null;
   }
