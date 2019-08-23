@@ -5,6 +5,7 @@ import Menu from "./components/menu";
 import Task from "./components/task";
 import TaskEdit from "./components/task-edit";
 import Board from "./components/board";
+import Search from "./components/search";
 
 const CARD_COUNT = 25;
 const MAX_CARD_TO_RENDER = 8;
@@ -54,6 +55,12 @@ const renderFilters = () => {
   renderElement(mainElement, filtersInstance.getElement(), Position.BEFOREEND);
 };
 
+const renderSearch = () => {
+  const search = new Search();
+
+  renderElement(mainElement, search.getElement(), Position.BEFOREEND);
+};
+
 const renderTask = () => {
   const task = new Task(CARDS[0]);
 
@@ -72,5 +79,6 @@ const renderBoard = (cards) => {
 };
 
 renderMenu();
+renderSearch();
 renderFilters();
 renderBoard(CARDS);

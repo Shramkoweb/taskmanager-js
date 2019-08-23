@@ -1,19 +1,7 @@
-import Task, {getCard} from "./task";
-import TaskEdit, {getCardEdit} from "./task-edit";
-import LoadMoreButton, {getLoadMoreButton} from "./load-more-button";
+import Task from "./task";
+import TaskEdit from "./task-edit";
+import LoadMoreButton from "./load-more-button";
 import {createElement} from "../util";
-
-/*/!* Ф-я гереации карточек *!/
-export const getBoardCards = (cards) => {
-  return cards.map((card) => getCard(card)).join(``);
-};
-
-/!* Ф-я генерации разметки борда для карточек *!/
-export const getBoard = (cards) => {
-  return `
-
-  `.trim();
-};*/
 
 export default class Board {
   constructor(tasks) {
