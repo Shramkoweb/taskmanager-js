@@ -1,4 +1,4 @@
-import {getCard} from "./card";
+import {getCard} from "./task";
 import {getCardEdit} from "./card-edit";
 import {getLoadMoreButton} from "./load-more-button";
 
