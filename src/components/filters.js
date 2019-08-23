@@ -17,9 +17,7 @@ export default class Filters {
 
   getTemplate() {
     const filterTemplates = this._filters
-      .map((filter) => new Filter(filter))
-      .map((instance) => instance.getTemplate())
-      .join(``);
+      .map((filter) => (new Filter(filter)).getTemplate()).join(``);
 
     return `
       <section class="main__filter filter container">
