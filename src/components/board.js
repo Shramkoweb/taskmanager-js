@@ -1,6 +1,6 @@
 import Task, {getCard} from "./task";
 import TaskEdit, {getCardEdit} from "./task-edit";
-import {getLoadMoreButton} from "./load-more-button";
+import LoadMoreButton, {getLoadMoreButton} from "./load-more-button";
 import {createElement} from "../util";
 
 /*/!* Ф-я гереации карточек *!/
@@ -45,7 +45,7 @@ export default class Board {
           ${getTaskTemplate}
         </div>
         
-        ${getLoadMoreButton()}
+        ${LoadMoreButton.getTemplate()}
       </section>
     `.trim();
   }

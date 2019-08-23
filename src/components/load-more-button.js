@@ -1,5 +1,7 @@
-export const getLoadMoreButton = () => {
-  return `
-    <button class="load-more" type="button">load more</button>
-  `.trim();
-};
+export default class LoadMoreButton {
+  static getTemplate() {
+    return `
+      <button class="load-more" type="button">load ahsdhshad</button>
+    `.trim();
+  }
+}

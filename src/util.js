@@ -43,5 +43,5 @@ const unrenderElement = (element) => {
   }
 };
 
-export {getRandomItemFrom, unrenderElement, renderElement, createElement, getRandomNumberInRange, getRandomBoolean};
+export {getRandomItemFrom, Position, unrenderElement, renderElement, createElement, getRandomNumberInRange, getRandomBoolean};
 

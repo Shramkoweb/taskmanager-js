@@ -1,5 +1,10 @@
 import {Position, renderElement} from "./util";
 import {getCards, getFiltersCount} from "./data";
+import Filters from "./components/filters";
+import Menu from "./components/menu";
+import Task from "./components/task";
+import TaskEdit from "./components/task-edit";
+import Board from "./components/board";
 
 const CARD_COUNT = 25;
 const MAX_CARD_TO_RENDER = 8;
@@ -9,7 +14,7 @@ const CARDS = getCards(CARD_COUNT);
 const mainControlElement = document.querySelector(`.control`);
 const mainElement = document.querySelector(`main`);
 
-/* Рендер компонентов в разметку */
+/*/!* Рендер компонентов в разметку *!/
 renderComponent(mainControlElement, getControl());
 renderComponent(mainElement, getSearch());
 renderComponent(mainElement, getFilters(getFiltersCount(CARDS)));
@@ -37,4 +42,35 @@ const onLoadMoreButtonClick = () => {
   renderLeftCards();
 };
 
-loadMoreButton.addEventListener(`click`, onLoadMoreButtonClick);
+loadMoreButton.addEventListener(`click`, onLoadMoreButtonClick);*/
+
+const renderMenu = () => {
+  const menuInstance = new Menu();
+  renderElement(mainControlElement, menuInstance.getElement(), Position.BEFOREEND);
+};
+
+const renderFilters = () => {
+  const filtersInstance = new Filters(getFiltersCount(CARDS));
+  renderElement(mainElement, filtersInstance.getElement(), Position.BEFOREEND);
+};
+
+const renderTask = () => {
+  const task = new Task(CARDS[0]);
+
+  renderElement(mainElement, task.getElement(), Position.BEFOREEND);
+};
+
+const renderEditTask = () => {
+  const editTask = new TaskEdit(CARDS[1]);
+
+  renderElement(mainElement, editTask.getElement(), Position.BEFOREEND);
+};
+
+const renderBoard = (cards) => {
+  const board = new Board(cards);
+  renderElement(mainElement, board.getElement(), Position.BEFOREEND);
+};
+
+renderMenu();
+renderFilters();
+renderBoard(CARDS);
