@@ -1,5 +1,5 @@
 import {getCard} from "./task";
-import {getCardEdit} from "./card-edit";
+import {getCardEdit} from "./task-edit";
 import {getLoadMoreButton} from "./load-more-button";
 
 /* Ф-я гереации карточек */
