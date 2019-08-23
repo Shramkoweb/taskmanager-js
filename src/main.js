@@ -1,8 +1,4 @@
-import {getControl} from "./components/control";
-import {getSearch} from "./components/search";
-import {getFilters} from "./components/filter";
-import {getBoard, getBoardCards} from "./components/board";
-import {renderComponent} from "./util";
+import {Position, renderElement} from "./util";
 import {getCards, getFiltersCount} from "./data";
 
 const CARD_COUNT = 25;
