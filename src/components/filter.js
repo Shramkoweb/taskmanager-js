@@ -1,18 +1,7 @@
-import {createElement} from "../util";
-
 export default class Filter {
   constructor({title, count}) {
     this._title = title;
     this._count = count;
-    this._element = null;
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
   }
 
   getTemplate() {
