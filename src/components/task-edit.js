@@ -10,6 +10,9 @@ export default class TaskEdit {
     this._element = null;
   }
 
+  removeElement() {
+    this._element = null;
+  }
 
   getElement() {
     if (!this._element) {

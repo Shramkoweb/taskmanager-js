@@ -18,6 +18,10 @@ export default class Task {
     return this._element;
   }
 
+  removeElement() {
+    this._element = null;
+  }
+
   getTemplate() {
     const isTaskRepeating = Object.keys(this._repeatingDays).some((day) => this._repeatingDays[day]) ? `card--repeat` : ``;
     const isDeadline = this._dueDate < new Date() ? `card--deadline ` : ``;

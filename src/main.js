@@ -1,4 +1,4 @@
-import {Position, renderElement} from "./util";
+import {getRandomNumberInRange, Position, renderElement, unrenderElement} from "./util";
 import {getCards} from "./data";
 import {getFiltersCount} from "./filter";
 import Filters from "./components/filters";
@@ -8,7 +8,8 @@ import TaskEdit from "./components/task-edit";
 import Board from "./components/board";
 import Search from "./components/search";
 
-const CARD_COUNT = 25;
+
+const CARD_COUNT = getRandomNumberInRange(8, 25); // Добавил для более навглядной проверки фильтров
 const MAX_CARD_TO_RENDER = 8;
 const CARDS = getCards(CARD_COUNT);
 let CARDS_ON_PAGE = MAX_CARD_TO_RENDER;
@@ -96,8 +97,7 @@ const renderLeftCards = () => {
   LEFT_CARDS_TO_RENDER = CARDS.length - CARDS_ON_PAGE;
 
   if (LEFT_CARDS_TO_RENDER <= 0) {
-    loadMoreButton.classList.add(`visually-hidden`);
-    loadMoreButton.removeEventListener(`click`, onLoadMoreButtonClick);
+    unrenderElement(loadMoreButton);
   }
 };
 

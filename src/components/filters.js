@@ -15,6 +15,11 @@ export default class Filters {
     return this._element;
   }
 
+
+  removeElement() {
+    this._element = null;
+  }
+
   getTemplate() {
     const filterTemplates = this._filters
       .map((filter) => (new Filter(filter)).getTemplate()).join(``);
