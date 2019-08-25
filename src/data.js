@@ -38,7 +38,6 @@ const UNITS = {
 
 const TIMESTAMP_DAY = UNITS.HOURS_IN_DAY * UNITS.MINUTES_IN_HOUR * UNITS.SECONDS_IN_MINUTE * UNITS.MILLISECONDS_IN_SECOND;
 
-
 /* Получаем дату в указаном диапазоне */
 export const getDateInRange = (range) => {
   return Date.now() + getRandomNumberInRange(-range, +range) * TIMESTAMP_DAY;

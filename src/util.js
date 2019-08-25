@@ -18,6 +18,7 @@ const Position = {
   BEFOREEND: `beforeend`
 };
 
+/* Создаем елемент из темплейта */
 const createElement = (template) => {
   const newElement = document.createElement(`div`);
   newElement.innerHTML = template;

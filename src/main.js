@@ -10,6 +10,8 @@ import Search from "./components/search";
 const CARD_COUNT = 25;
 const MAX_CARD_TO_RENDER = 8;
 const CARDS = getCards(CARD_COUNT);
+let CARDS_ON_PAGE = MAX_CARD_TO_RENDER;
+let LEFT_CARDS_TO_RENDER = CARDS.length - CARDS_ON_PAGE;
 
 const mainControlElement = document.querySelector(`.control`);
 const mainElement = document.querySelector(`main`);
@@ -33,14 +35,12 @@ const renderSearch = () => {
 const board = new Board().getElement();
 const tasksContainer = board.querySelector(`.board__tasks`);
 
-
 const renderTasks = (tasks) => {
   const fragment = document.createDocumentFragment();
 
   tasks.forEach((task) => {
     const taskInstance = new Task(task);
     const taskEditInstance = new TaskEdit(task);
-
 
     const onEscKeyDown = (evt) => {
       if (evt.key === `Escape` || evt.key === `Esc`) {
@@ -87,9 +87,6 @@ renderBoard(CARDS.slice(0, MAX_CARD_TO_RENDER));
 
 const loadMoreButton = mainElement.querySelector(`.load-more`);
 const cardsBoardElement = mainElement.querySelector(`.board__tasks`);
-
-let CARDS_ON_PAGE = MAX_CARD_TO_RENDER;
-let LEFT_CARDS_TO_RENDER = CARDS.length - CARDS_ON_PAGE;
 
 const renderLeftCards = () => {
   cardsBoardElement.appendChild(renderTasks(CARDS.slice(CARDS_ON_PAGE, (CARDS_ON_PAGE + MAX_CARD_TO_RENDER))));
