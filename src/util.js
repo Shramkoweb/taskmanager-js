@@ -44,5 +44,12 @@ const unrenderElement = (element) => {
   }
 };
 
-export {getRandomItemFrom, Position, unrenderElement, renderElement, createElement, getRandomNumberInRange, getRandomBoolean};
+/* обработка ивента Esc */
+const isEscKeyDown = (evt, action) => {
+  if (evt.key === `Escape` || evt.key === `Esc`) {
+    action();
+  }
+};
+
+export {getRandomItemFrom, Position, unrenderElement, renderElement, createElement, getRandomNumberInRange, getRandomBoolean, isEscKeyDown};
 

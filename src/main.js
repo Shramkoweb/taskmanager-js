@@ -1,4 +1,4 @@
-import {getRandomNumberInRange, Position, renderElement, unrenderElement} from "./util";
+import {getRandomNumberInRange, isEscKeyDown, Position, renderElement, unrenderElement} from "./util";
 import {getCards} from "./data";
 import {getFiltersCount} from "./filter";
 import Filters from "./components/filters";
@@ -40,34 +40,39 @@ const tasksContainer = board.querySelector(`.board__tasks`);
 const renderTasks = (tasks) => {
   const fragment = document.createDocumentFragment();
 
+
   tasks.forEach((task) => {
     const taskInstance = new Task(task);
     const taskEditInstance = new TaskEdit(task);
+    const onTaskEditEscPress = (evt) => isEscKeyDown(evt, closeEditTask);
 
-    const onEscKeyDown = (evt) => {
-      if (evt.key === `Escape` || evt.key === `Esc`) {
-        tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
-        document.removeEventListener(`keydown`, onEscKeyDown);
-      }
+    const closeEditTask = () => {
+      tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
+      document.removeEventListener(`keydown`, onTaskEditEscPress);
     };
 
     taskInstance.getElement()
       .querySelector(`.card__btn--edit`)
       .addEventListener(`click`, () => {
         tasksContainer.replaceChild(taskEditInstance.getElement(), taskInstance.getElement());
-        document.addEventListener(`keydown`, onEscKeyDown);
+        document.addEventListener(`keydown`, onTaskEditEscPress);
+      });
+
+    taskEditInstance.getElement().querySelector(`textarea`)
+      .addEventListener(`focus`, () => {
+        document.removeEventListener(`keydown`, onTaskEditEscPress);
       });
 
     taskEditInstance.getElement().querySelector(`textarea`)
       .addEventListener(`blur`, () => {
-        document.addEventListener(`keydown`, onEscKeyDown);
+        document.addEventListener(`keydown`, onTaskEditEscPress);
       });
 
     taskEditInstance.getElement()
       .querySelector(`.card__save`)
       .addEventListener(`click`, () => {
         tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
-        document.removeEventListener(`keydown`, onEscKeyDown);
+        document.removeEventListener(`keydown`, onTaskEditEscPress);
       });
 
     fragment.appendChild(taskInstance.getElement());
