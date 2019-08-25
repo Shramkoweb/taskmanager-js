@@ -21,7 +21,7 @@ const TAGS = [
 ];
 
 /* Массив цветов */
-const COLORS = [
+const COLOURS = [
   `black`,
   `yellow`,
   `blue`,
@@ -68,7 +68,7 @@ export const getCardData = () => ({
     'su': false,
   },
   tags: new Set(getRandomTags(TAGS, getRandomNumberInRange(TAGS_MIN_COUNT, TAGS_MAX_COUNT))),
-  color: getRandomItemFrom(COLORS),
+  color: getRandomItemFrom(COLOURS),
   isFavorite: getRandomBoolean(),
   isArchive: getRandomBoolean()
 });
@@ -81,7 +81,7 @@ export const getCards = (count) => {
 /* Вычесляем количество задач подходящих под фильтр */
 export const getFiltersCount = (cards) => {
   const counts = {
-    all: cards.length,
+    all: 0,
     overdue: 0,
     today: 0,
     favorites: 0,
@@ -115,6 +115,7 @@ export const getFiltersCount = (cards) => {
     if (card.isArchive) {
       counts.archive++;
     }
+    counts.all = cards.length - counts.archive;
   });
 
   const resultFilters = [];
