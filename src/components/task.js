@@ -20,6 +20,7 @@ export default class Task {
 
   getTemplate() {
     const isTaskRepeating = Object.keys(this._repeatingDays).some((day) => this._repeatingDays[day]) ? `card--repeat` : ``;
+    const isDeadline = this._dueDate < new Date() ? `card--deadline ` : ``;
     const getTagsTemplate = [...this._tags].map((tag) => {
       return `
         <span class="card__hashtag-inner">
@@ -28,7 +29,7 @@ export default class Task {
       `.trim();
     }).join(``);
     return `
-      <article class="card card--${this._color} ${isTaskRepeating}">
+      <article class="card card--${this._color} ${isTaskRepeating} ${isDeadline}">
         <div class="card__form">
           <div class="card__inner">
             <div class="card__control">
@@ -40,7 +41,7 @@ export default class Task {
             <div class="card__color-bar">
               <svg class="card__color-bar-wave" width="100%" height="10">
                 <use xlink:href="#wave"></use>
-              </svg>
+              </svg> 
             </div>
       
             <div class="card__textarea-wrap">
