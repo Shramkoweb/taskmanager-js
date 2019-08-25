@@ -94,14 +94,27 @@ export const getFiltersCount = (cards) => {
     const currentDate = new Date();
     const cardDate = new Date(card.dueDate);
     const isCardToday = (currentDate.getDay() === cardDate.getDay()) && (currentDate.getDate() === cardDate.getDate());
+    const isRepeating = Object.values(card.repeatingDays).some((day) => day);
+    const isOverdue = currentDate > cardDate;
 
-
-    counts.overdue = currentDate > cardDate ? counts.overdue += 1 : counts.overdue;
-    counts.today = isCardToday ? counts.today += 1 : counts.today;
-    counts.favorites = card.isFavorite ? counts.favorites += 1 : counts.favorites;
-    counts.repeating = Object.keys(card.repeatingDays).some((day) => card.repeatingDays[day]) ? counts.repeating += 1 : counts.repeating;
-    counts.tags = card.tags ? counts.tags += 1 : counts.tags;
-    counts.archive = card.isArchive ? counts.archive += 1 : counts.archive;
+    if (isOverdue) {
+      counts.overdue++;
+    }
+    if (isCardToday) {
+      counts.today++;
+    }
+    if (card.isFavorite) {
+      counts.favorites++;
+    }
+    if (isRepeating) {
+      counts.repeating++;
+    }
+    if (card.tags) {
+      counts.tags++;
+    }
+    if (card.isArchive) {
+      counts.archive++;
+    }
   });
 
   const resultFilters = [];
