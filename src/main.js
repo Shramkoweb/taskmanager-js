@@ -41,10 +41,31 @@ const renderTasks = (tasks) => {
     const taskInstance = new Task(task);
     const taskEditInstance = new TaskEdit(task);
 
+
+    const onEscKeyDown = (evt) => {
+      if (evt.key === `Escape` || evt.key === `Esc`) {
+        tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
+        document.removeEventListener(`keydown`, onEscKeyDown);
+      }
+    };
+
     taskInstance.getElement()
       .querySelector(`.card__btn--edit`)
       .addEventListener(`click`, () => {
         tasksContainer.replaceChild(taskEditInstance.getElement(), taskInstance.getElement());
+        document.addEventListener(`keydown`, onEscKeyDown);
+      });
+
+    taskEditInstance.getElement().querySelector(`textarea`)
+      .addEventListener(`blur`, () => {
+        document.addEventListener(`keydown`, onEscKeyDown);
+      });
+
+    taskEditInstance.getElement()
+      .querySelector(`.card__save`)
+      .addEventListener(`click`, () => {
+        tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
+        document.removeEventListener(`keydown`, onEscKeyDown);
       });
 
     fragment.appendChild(taskInstance.getElement());
