@@ -54,25 +54,9 @@ const renderTasks = (tasks) => {
 };
 
 const renderBoard = (cards) => {
+  tasksContainer.appendChild(renderTasks(cards));
 
-  const getFilledBoard = (cards) => {
-    cards.forEach((task) => {
-      const card = new Task(task);
-      const taskEdit = new TaskEdit(task);
-
-      card.getElement()
-        .querySelector(`.card__btn--edit`)
-        .addEventListener(`click`, () => {
-          tasksContainer.replaceChild(taskEdit.getElement(), card.getElement());
-        });
-
-      tasksContainer.appendChild(card.getElement());
-    });
-
-    return board;
-  };
-
-  renderElement(mainElement, getFilledBoard(cards), Position.BEFOREEND);
+  renderElement(mainElement, board, Position.BEFOREEND);
 };
 
 renderMenu();
