@@ -1,11 +1,8 @@
-import Task from "./task";
-import TaskEdit from "./task-edit";
 import LoadMoreButton from "./load-more-button";
 import {createElement} from "../util";
 
 export default class Board {
-  constructor(tasks) {
-    this._tasks = tasks;
+  constructor() {
     this._element = null;
   }
 
@@ -18,8 +15,6 @@ export default class Board {
   }
 
   getTemplate() {
-    const getEditTaskTemplate = new TaskEdit(this._tasks[0]).getTemplate();
-    const getTaskTemplate = this._tasks.map((task) => new Task(task).getTemplate()).join(``);
     return `
       <section class="board container">
         <div class="board__filter-list">
@@ -29,8 +24,6 @@ export default class Board {
         </div>
         
         <div class="board__tasks">
-          ${getEditTaskTemplate}
-          ${getTaskTemplate}
         </div>
         
         ${LoadMoreButton.getTemplate()}
