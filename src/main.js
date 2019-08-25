@@ -1,5 +1,6 @@
 import {Position, renderElement} from "./util";
-import {getCards, getFiltersCount} from "./data";
+import {getCards} from "./data";
+import {getFiltersCount} from "./filter";
 import Filters from "./components/filters";
 import Menu from "./components/menu";
 import Task from "./components/task";
