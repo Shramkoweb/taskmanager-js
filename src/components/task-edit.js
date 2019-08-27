@@ -1,5 +1,13 @@
 import {createElement} from "../util";
 
+const COLORS = [
+  `black`,
+  `yellow`,
+  `blue`,
+  `green`,
+  `pink`,
+];
+
 export default class TaskEdit {
   constructor({description, dueDate, tags, color, repeatingDays}) {
     this._description = description;
@@ -32,14 +40,6 @@ export default class TaskEdit {
         `.trim();
       }).join(``);
     const getColorControlsTemplate = () => {
-      const COLORS = [
-        `black`,
-        `yellow`,
-        `blue`,
-        `green`,
-        `pink`,
-      ];
-
       return COLORS.map((color) => {
         return `
           <input type="radio" id="color-${color}-4" class="card__color-input card__color-input--${color} visually-hidden" name="color" value="${color}"

@@ -9,11 +9,11 @@ import Board from "./components/board";
 import Search from "./components/search";
 
 
-const CARD_COUNT = getRandomNumberInRange(8, 25); // Добавил для более навглядной проверки фильтров
+const cardAmount = getRandomNumberInRange(8, 25); // Добавил для более навглядной проверки фильтров
 const MAX_CARD_TO_RENDER = 8;
-const CARDS = getCards(CARD_COUNT);
+const cards = getCards(cardAmount);
 let CARDS_ON_PAGE = MAX_CARD_TO_RENDER;
-let LEFT_CARDS_TO_RENDER = CARDS.length - CARDS_ON_PAGE;
+let LEFT_CARDS_TO_RENDER = cards.length - CARDS_ON_PAGE;
 
 const mainControlElement = document.querySelector(`.control`);
 const mainElement = document.querySelector(`main`);
@@ -24,7 +24,7 @@ const renderMenu = () => {
 };
 
 const renderFilters = () => {
-  const filtersInstance = new Filters(getFiltersCount(CARDS));
+  const filtersInstance = new Filters(getFiltersCount(cards));
   renderElement(mainElement, filtersInstance.getElement(), Position.BEFOREEND);
 };
 
@@ -90,16 +90,16 @@ const renderBoard = (cards) => {
 renderMenu();
 renderSearch();
 renderFilters();
-renderBoard(CARDS.slice(0, MAX_CARD_TO_RENDER));
+renderBoard(cards.slice(0, MAX_CARD_TO_RENDER));
 
 const loadMoreButton = mainElement.querySelector(`.load-more`);
 const cardsBoardElement = mainElement.querySelector(`.board__tasks`);
 
 const renderLeftCards = () => {
-  cardsBoardElement.appendChild(renderTasks(CARDS.slice(CARDS_ON_PAGE, (CARDS_ON_PAGE + MAX_CARD_TO_RENDER))));
+  cardsBoardElement.appendChild(renderTasks(cards.slice(CARDS_ON_PAGE, (CARDS_ON_PAGE + MAX_CARD_TO_RENDER))));
 
   CARDS_ON_PAGE = CARDS_ON_PAGE + MAX_CARD_TO_RENDER;
-  LEFT_CARDS_TO_RENDER = CARDS.length - CARDS_ON_PAGE;
+  LEFT_CARDS_TO_RENDER = cards.length - CARDS_ON_PAGE;
 
   if (LEFT_CARDS_TO_RENDER <= 0) {
     unrenderElement(loadMoreButton);
