@@ -1,7 +1,9 @@
 import {createElement} from "../util";
+import Filter from "./filter";
 
-export default class Search {
-  constructor() {
+export default class Filters {
+  constructor(filters) {
+    this._filters = filters;
     this._element = null;
   }
 
@@ -13,15 +15,18 @@ export default class Search {
     return this._element;
   }
 
+
   removeElement() {
     this._element = null;
   }
 
   getTemplate() {
+    const filterTemplates = this._filters
+      .map((filter) => (new Filter(filter)).getTemplate()).join(``);
+
     return `
-      <section class="main__search search container">
-        <input type="text" id="search__input" class="search__input" placeholder="START TYPING — SEARCH BY WORD, #HASHTAG OR DATE"/>
-        <label class="visually-hidden" for="search__input">Search</label>
+      <section class="main__filter filter container">
+        ${filterTemplates}
       </section>
     `.trim();
   }

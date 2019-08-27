@@ -1,15 +1,25 @@
-import {getCard} from "./card";
-import {getCardEdit} from "./card-edit";
-import {getLoadMoreButton} from "./load-more-button";
+import LoadMoreButton from "./load-more-button";
+import {createElement} from "../util";
 
-/* Ф-я гереации карточек */
-export const getBoardCards = (cards) => {
-  return cards.map((card) => getCard(card)).join(``);
-};
+export default class Board {
+  constructor() {
+    this._element = null;
+  }
 
-/* Ф-я генерации разметки борда для карточек */
-export const getBoard = (cards) => {
-  return `
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return `
       <section class="board container">
         <div class="board__filter-list">
           <a href="#" class="board__filter">SORT BY DEFAULT</a>
@@ -18,11 +28,10 @@ export const getBoard = (cards) => {
         </div>
         
         <div class="board__tasks">
-          ${getCardEdit(cards[0])}
-          ${getBoardCards(cards.slice(1))}
         </div>
         
-        ${getLoadMoreButton()}
+        ${LoadMoreButton.getTemplate()}
       </section>
-  `.trim();
-};
+    `.trim();
+  }
+}
