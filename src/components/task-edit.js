@@ -9,8 +9,9 @@ const COLORS = [
 ];
 
 export default class TaskEdit {
-  constructor({description, dueDate, tags, color, repeatingDays}) {
+  constructor({description, dueDate, tags, color, repeatingDays, id}) {
     this._description = description;
+    this._id = id;
     this._dueDate = dueDate;
     this._tags = tags;
     this._color = color;
@@ -35,17 +36,17 @@ export default class TaskEdit {
     const getRepeatDaysTemplate = Object.keys(this._repeatingDays)
       .map((day) => {
         return `
-          <input class="visually-hidden card__repeat-day-input" type="checkbox" id="repeat-${day}-4" name="repeat" value="${day}" ${this._repeatingDays[day] ? `checked` : ``}/>
-          <label class="card__repeat-day" for="repeat-${day}-4">${day}</label>
+          <input class="visually-hidden card__repeat-day-input" type="checkbox" id="repeat-${day}-${this._id}" name="repeat" value="${day}" ${this._repeatingDays[day] ? `checked` : ``}/>
+          <label class="card__repeat-day" for="repeat-${day}-${this._id}">${day}</label>
         `.trim();
       }).join(``);
     const getColorControlsTemplate = () => {
       return COLORS.map((color) => {
         return `
-          <input type="radio" id="color-${color}-4" class="card__color-input card__color-input--${color} visually-hidden" name="color" value="${color}"
+          <input type="radio" id="color-${color}-${this._id}" class="card__color-input card__color-input--${color} visually-hidden" name="color" value="${color}"
             ${this._color === color ? `checked` : ``}
           />
-          <label for="color-${color}-4" class="card__color card__color--${color}">${color}</label>
+          <label for="color-${color}-${this._id}" class="card__color card__color--${color}">${color}</label>
         `.trim();
       }).join(``);
     };
