@@ -29,8 +29,6 @@ export default class Board {
         
         <div class="board__tasks">
         </div>
-        
-        ${LoadMoreButton.getTemplate()}
       </section>
     `.trim();
   }
