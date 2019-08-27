@@ -81,8 +81,8 @@ const renderTasks = (tasks) => {
   return fragment;
 };
 
-const renderBoard = (cards) => {
-  tasksContainer.appendChild(renderTasks(cards));
+const renderBoard = (tasks) => {
+  tasksContainer.appendChild(renderTasks(tasks));
 
   renderElement(mainElement, board, Position.BEFOREEND);
 };
