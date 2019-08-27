@@ -44,19 +44,23 @@ const renderTasks = (tasks) => {
   tasks.forEach((task) => {
     const taskInstance = new Task(task);
     const taskEditInstance = new TaskEdit(task);
-    const onTaskEditEscPress = (evt) => isEscKeyDown(evt, closeEditTask);
 
     const closeEditTask = () => {
       tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
       document.removeEventListener(`keydown`, onTaskEditEscPress);
     };
 
+    const openEditTask = () => {
+      tasksContainer.replaceChild(taskEditInstance.getElement(), taskInstance.getElement());
+      document.addEventListener(`keydown`, onTaskEditEscPress);
+    };
+
+    const onTaskEditEscPress = (evt) => isEscKeyDown(evt, closeEditTask);
+    const onEditTaskButtonClick = () => openEditTask();
+
     taskInstance.getElement()
       .querySelector(`.card__btn--edit`)
-      .addEventListener(`click`, () => {
-        tasksContainer.replaceChild(taskEditInstance.getElement(), taskInstance.getElement());
-        document.addEventListener(`keydown`, onTaskEditEscPress);
-      });
+      .addEventListener(`click`, onEditTaskButtonClick);
 
     taskEditInstance.getElement().querySelector(`textarea`)
       .addEventListener(`focus`, () => {
@@ -70,10 +74,7 @@ const renderTasks = (tasks) => {
 
     taskEditInstance.getElement()
       .querySelector(`.card__save`)
-      .addEventListener(`click`, () => {
-        tasksContainer.replaceChild(taskInstance.getElement(), taskEditInstance.getElement());
-        document.removeEventListener(`keydown`, onTaskEditEscPress);
-      });
+      .addEventListener(`click`, closeEditTask);
 
     fragment.appendChild(taskInstance.getElement());
   });
