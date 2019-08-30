@@ -55,7 +55,8 @@ const getRandomTags = (tags, count) => {
 };
 
 /* Генерация обьекта для верстки карточки */
-export const getCardData = () => ({
+export const getCardData = (id) => ({
+  id,
   description: getRandomItemFrom(DESCRIPTIONS),
   dueDate: getDateInRange(DATE_RANGE),
   repeatingDays: {
@@ -75,5 +76,5 @@ export const getCardData = () => ({
 
 /* Генерация массива обьектов карточек */
 export const getCards = (count) => {
-  return new Array(count).fill(``).map(getCardData);
+  return new Array(count).fill(``).map((card, index) => getCardData(index));
 };
